@@ -1,0 +1,11 @@
+{
+  "name": "mapa-interactivo-fcen",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Página estática interactiva para ubicarse dentro de FCEN-UBA.",
+  "scripts": {
+    "dev": "python3 -m http.server 8000",
+    "dev:save": "node tools/server.js",
+    "check:data": "python3 -m json.tool public/data.json >/tmp/mapa-fcen-data.json"
+  }
+}

@@ -1,4 +1,6 @@
-# Prompt para Claude Code
+# Prompt histórico para Claude Code
+
+> Nota: este prompt pertenece a la etapa inicial del proyecto y menciona la estructura anterior (`app.js`, `styles.css`, `server.js` en la raíz). La estructura vigente está documentada en `README.md`: el código vive en `assets/`, las herramientas locales en `tools/` y la documentación en `docs/`.
 
 > Copiá y pegá TODO lo que está debajo de la línea en Claude Code, dentro de la carpeta del proyecto `mapa-exactas/`.
 > En esa carpeta ya están: `public/planos/` (17 imágenes de planos) y `public/data.json` (datos iniciales). **No los regeneres**: construí la app alrededor de ellos.

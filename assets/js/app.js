@@ -528,14 +528,14 @@ function borrarDictEntry() {
 
 async function checkServer() {
   try {
-    const r = await fetch('/api/ping', { signal: AbortSignal.timeout(800) });
+    const r = await fetch('api/ping', { signal: AbortSignal.timeout(800) });
     if (r.ok) document.getElementById('save-server').hidden = false;
   } catch { /* no hay servidor corriendo — está bien */ }
 }
 
 async function guardarEnServidor() {
   try {
-    const r = await fetch('/guardar', {
+    const r = await fetch('guardar', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(state.data, null, 2),
