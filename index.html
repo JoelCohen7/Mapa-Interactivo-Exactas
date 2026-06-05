@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mapa interactivo · FCEN-UBA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="public/vendor/leaflet/leaflet.css" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div id="app">
+    <!-- Panel lateral -->
+    <aside id="sidebar">
+      <header class="brand">
+        <h1>Mapa <span>FCEN</span></h1>
+        <p class="subtitle">Buscador de espacios por pabellón y piso</p>
+      </header>
+
+      <!-- Buscador -->
+      <section class="block">
+        <div class="search-wrap">
+          <input id="search" type="search" placeholder="Buscar (INQUIMAE, Aula Magna, QOR…)" autocomplete="off" />
+        </div>
+        <div id="results" class="results" hidden></div>
+      </section>
+
+      <!-- Selector de piso -->
+      <section class="block">
+        <label class="field-label" for="pabellon-select">Pabellón</label>
+        <select id="pabellon-select"></select>
+        <label class="field-label" for="piso-select">Piso</label>
+        <select id="piso-select"></select>
+      </section>
+
+      <!-- Leyenda / filtros -->
+      <section class="block">
+        <div class="block-head">
+          <h2>Categorías</h2>
+        </div>
+        <div id="legend" class="legend"></div>
+      </section>
+
+      <!-- Controles de edición y datos -->
+      <section class="block">
+        <button id="edit-toggle" class="btn btn-edit">✏️ Modo edición</button>
+        <div id="edit-controls" class="edit-controls" hidden>
+          <button id="add-entry" class="btn btn-ghost">＋ Agregar espacio</button>
+          <p id="add-hint" class="hint" hidden>Hacé click en el plano donde va el espacio…</p>
+        </div>
+        <button id="open-dict" class="btn btn-ghost">📖 Diccionario de siglas</button>
+        <div class="data-row">
+          <button id="export" class="btn btn-ghost">⤓ Exportar JSON</button>
+          <button id="import" class="btn btn-ghost">⤒ Importar JSON</button>
+          <input id="import-file" type="file" accept="application/json" hidden />
+        </div>
+        <button id="save-server" class="btn btn-ghost" hidden>☁ Guardar en servidor</button>
+        <div id="unsaved" class="unsaved" hidden>
+          <span>Tenés cambios locales sin publicar.</span>
+          <button id="discard" class="link">Descartar</button>
+        </div>
+      </section>
+
+      <footer class="foot">
+        <small>Datos: leyendas de los planos de la Secretaría Técnica (FCEN-UBA). Posiciones “aprox” = ajustar arrastrando.</small>
+      </footer>
+    </aside>
+
+    <!-- Mapa -->
+    <main id="map-area">
+      <div id="floor-title" class="floor-title"></div>
+      <div id="map"></div>
+      <button id="sidebar-toggle" aria-label="Mostrar/ocultar panel">☰</button>
+    </main>
+  </div>
+
+  <!-- Formulario de edición (modal simple) -->
+  <div id="form-backdrop" class="backdrop" hidden>
+    <form id="entry-form" class="modal">
+      <h3 id="form-title">Editar espacio</h3>
+      <label>Nombre
+        <input name="nombre" required />
+      </label>
+      <label>Categoría
+        <select name="tipo"></select>
+      </label>
+      <label>Alias (separados por coma)
+        <input name="alias" placeholder="INQUIMAE, instituto…" />
+      </label>
+      <label>Descripción
+        <textarea name="descripcion" rows="3"></textarea>
+      </label>
+      <div class="form-actions">
+        <button type="button" id="form-delete" class="btn btn-danger">Borrar</button>
+        <span class="spacer"></span>
+        <button type="button" id="form-cancel" class="btn btn-ghost">Cancelar</button>
+        <button type="submit" class="btn btn-edit">Guardar</button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal: diccionario de siglas -->
+  <div id="dict-backdrop" class="backdrop" hidden>
+    <div class="modal dict-modal">
+      <div class="modal-header">
+        <h3>Diccionario de siglas</h3>
+        <button id="dict-close" class="btn-icon" aria-label="Cerrar">✕</button>
+      </div>
+      <div class="dict-toolbar">
+        <input id="dict-search" type="search" placeholder="Filtrar por código o nombre…" autocomplete="off" />
+        <button id="dict-add" class="btn btn-edit">＋ Agregar</button>
+      </div>
+      <div id="dict-list" class="dict-list"></div>
+    </div>
+  </div>
+
+  <!-- Modal: formulario de entrada del diccionario -->
+  <div id="dict-entry-backdrop" class="backdrop" hidden>
+    <form id="dict-entry-form" class="modal">
+      <h3 id="dict-entry-title">Nueva sigla</h3>
+      <label>Código / sigla
+        <input name="codigo" required autocomplete="off" />
+      </label>
+      <label>Nombre completo
+        <input name="nombre" required />
+      </label>
+      <label>Tipo
+        <select name="tipo"></select>
+      </label>
+      <div class="form-actions">
+        <button type="button" id="dict-entry-delete" class="btn btn-danger">Borrar</button>
+        <span class="spacer"></span>
+        <button type="button" id="dict-entry-cancel" class="btn btn-ghost">Cancelar</button>
+        <button type="submit" class="btn btn-edit">Guardar</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="public/vendor/leaflet/leaflet.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

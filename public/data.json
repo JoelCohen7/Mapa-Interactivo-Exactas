@@ -1,0 +1,613 @@
+{
+  "meta": {
+    "titulo": "Mapa interactivo — FCEN UBA (Ciudad Universitaria)",
+    "descripcion": "Buscador de departamentos, institutos, secretarías y espacios sobre los planos por pabellón y piso.",
+    "fuente": "Planos de la Secretaría Técnica / Plan de Protección, FCEN-UBA",
+    "version": 1,
+    "nota": "Las posiciones marcadas como confianza='aprox' fueron estimadas y deben ajustarse arrastrando el marcador en la app."
+  },
+  "categorias": {
+    "secretaria": {
+      "label": "Secretaría",
+      "color": "#3b82f6"
+    },
+    "departamento": {
+      "label": "Departamento docente",
+      "color": "#22c55e"
+    },
+    "instituto": {
+      "label": "Instituto de investigación",
+      "color": "#a855f7"
+    },
+    "carrera": {
+      "label": "Carrera / gestión académica",
+      "color": "#eab308"
+    },
+    "tecnica": {
+      "label": "Área técnica / servicios",
+      "color": "#f97316"
+    },
+    "comun": {
+      "label": "Área común / exterior",
+      "color": "#9ca3af"
+    },
+    "otro": {
+      "label": "Otro / a definir",
+      "color": "#ec4899"
+    }
+  },
+  "diccionario": [
+    {
+      "codigo": "DECA",
+      "nombre": "Decanato",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SGRAL",
+      "nombre": "Secretaría General",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SACA",
+      "nombre": "Secretaría Académica",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SECB",
+      "nombre": "Secretaría de Extensión",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SHAB",
+      "nombre": "Secretaría de Hábitat",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SHAC",
+      "nombre": "Secretaría de Hacienda",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "STEC",
+      "nombre": "Secretaría Técnica",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SINV",
+      "nombre": "Secretaría de Investigación",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SCON",
+      "nombre": "Secretaría de Concursos",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SPOS",
+      "nombre": "Secretaría de Posgrado",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "SRIN",
+      "nombre": "Secretaría de Relaciones Institucionales (verificar)",
+      "tipo": "secretaria"
+    },
+    {
+      "codigo": "CECEN",
+      "nombre": "Centro de Estudiantes (CECEN)",
+      "tipo": "otro"
+    },
+    {
+      "codigo": "APUBA",
+      "nombre": "APUBA (no docentes)",
+      "tipo": "otro"
+    },
+    {
+      "codigo": "AGDUBA",
+      "nombre": "AGD-UBA (docentes)",
+      "tipo": "otro"
+    },
+    {
+      "codigo": "FIS",
+      "nombre": "Departamento de Física",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "MAT",
+      "nombre": "Departamento de Matemática",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "DCO",
+      "nombre": "Departamento de Computación",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "QOR",
+      "nombre": "Departamento de Química Orgánica",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "QIN",
+      "nombre": "Departamento de Química Inorgánica",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "QBI",
+      "nombre": "Departamento de Química Biológica",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "DCAO",
+      "nombre": "Departamento de Cs. de la Atmósfera y los Océanos",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "EGE",
+      "nombre": "Departamento de Ecología, Genética y Evolución",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "BBE",
+      "nombre": "Departamento de Biodiversidad y Biología Experimental",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "FBMC",
+      "nombre": "Departamento de Fisiología, Biología Molecular y Celular",
+      "tipo": "departamento"
+    },
+    {
+      "codigo": "CCCB",
+      "nombre": "Carrera de Ciencias Biológicas",
+      "tipo": "carrera"
+    },
+    {
+      "codigo": "CBC",
+      "nombre": "Ciclo Básico Común",
+      "tipo": "carrera"
+    },
+    {
+      "codigo": "CEFIEC",
+      "nombre": "CEFIEC (Enseñanza de las Ciencias)",
+      "tipo": "carrera"
+    },
+    {
+      "codigo": "INQUIMAE",
+      "nombre": "INQUIMAE (Instituto de Química Física de los Materiales, Medio Ambiente y Energía)",
+      "tipo": "instituto"
+    },
+    {
+      "codigo": "IC",
+      "nombre": "Instituto del Cálculo",
+      "tipo": "instituto"
+    },
+    {
+      "codigo": "ATEC",
+      "nombre": "Áreas Técnicas",
+      "tipo": "tecnica"
+    },
+    {
+      "codigo": "COMUN",
+      "nombre": "Áreas comunes",
+      "tipo": "comun"
+    },
+    {
+      "codigo": "EXT",
+      "nombre": "Áreas exteriores",
+      "tipo": "comun"
+    },
+    {
+      "codigo": "ADEF",
+      "nombre": "Áreas a definir / compartidas",
+      "tipo": "otro"
+    }
+  ],
+  "pisos": [
+    {
+      "id": "pab0-subsuelo",
+      "pabellon": "Pabellón 0+inf",
+      "piso": "Subsuelo",
+      "imagen": "planos/pab0-subsuelo.png"
+    },
+    {
+      "id": "pab0-pb",
+      "pabellon": "Pabellón 0+inf",
+      "piso": "Planta baja",
+      "imagen": "planos/pab0-pb.png"
+    },
+    {
+      "id": "pab0-piso1",
+      "pabellon": "Pabellón 0+inf",
+      "piso": "Piso 1",
+      "imagen": "planos/pab0-piso1.png"
+    },
+    {
+      "id": "pab1-subsuelo",
+      "pabellon": "Pabellón 1",
+      "piso": "Subsuelo",
+      "imagen": "planos/pab1-subsuelo.png"
+    },
+    {
+      "id": "pab1-pb",
+      "pabellon": "Pabellón 1",
+      "piso": "Planta baja",
+      "imagen": "planos/pab1-pb.png"
+    },
+    {
+      "id": "pab1-entrepiso",
+      "pabellon": "Pabellón 1",
+      "piso": "Entrepiso",
+      "imagen": "planos/pab1-entrepiso.png"
+    },
+    {
+      "id": "pab1-piso1",
+      "pabellon": "Pabellón 1",
+      "piso": "Primer piso",
+      "imagen": "planos/pab1-piso1.png"
+    },
+    {
+      "id": "pab1-piso2",
+      "pabellon": "Pabellón 1",
+      "piso": "Segundo piso",
+      "imagen": "planos/pab1-piso2.png"
+    },
+    {
+      "id": "pab2-subsuelo",
+      "pabellon": "Pabellón 2",
+      "piso": "Subsuelo",
+      "imagen": "planos/pab2-subsuelo.png"
+    },
+    {
+      "id": "pab2-entresuelo",
+      "pabellon": "Pabellón 2",
+      "piso": "Entresuelo",
+      "imagen": "planos/pab2-entresuelo.png"
+    },
+    {
+      "id": "pab2-pb",
+      "pabellon": "Pabellón 2",
+      "piso": "Planta baja",
+      "imagen": "planos/pab2-pb.png"
+    },
+    {
+      "id": "pab2-piso1",
+      "pabellon": "Pabellón 2",
+      "piso": "Piso 1",
+      "imagen": "planos/pab2-piso1.png"
+    },
+    {
+      "id": "pab2-entrepiso",
+      "pabellon": "Pabellón 2",
+      "piso": "Entrepiso",
+      "imagen": "planos/pab2-entrepiso.png"
+    },
+    {
+      "id": "pab2-piso2",
+      "pabellon": "Pabellón 2",
+      "piso": "Piso 2",
+      "imagen": "planos/pab2-piso2.png"
+    },
+    {
+      "id": "pab2-piso3",
+      "pabellon": "Pabellón 2",
+      "piso": "Piso 3",
+      "imagen": "planos/pab2-piso3.png"
+    },
+    {
+      "id": "pab2-piso4",
+      "pabellon": "Pabellón 2",
+      "piso": "Piso 4",
+      "imagen": "planos/pab2-piso4.png"
+    },
+    {
+      "id": "pab2-azotea",
+      "pabellon": "Pabellón 2",
+      "piso": "Azotea",
+      "imagen": "planos/pab2-azotea.png"
+    }
+  ],
+  "entradas": [
+    {
+      "id": "a1",
+      "nombre": "Instituto del Cálculo (IC)",
+      "tipo": "instituto",
+      "pisoId": "pab0-pb",
+      "x": 0.07,
+      "y": 0.13,
+      "alias": [
+        "IC"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "a2",
+      "nombre": "Secretaría General (SGRAL)",
+      "tipo": "secretaria",
+      "pisoId": "pab0-pb",
+      "x": 0.23,
+      "y": 0.27,
+      "alias": [
+        "SGRAL"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "a3",
+      "nombre": "Secretaría Académica (SACA)",
+      "tipo": "secretaria",
+      "pisoId": "pab0-pb",
+      "x": 0.9,
+      "y": 0.1,
+      "alias": [
+        "SACA"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "a4",
+      "nombre": "Departamento de Computación (DCO)",
+      "tipo": "departamento",
+      "pisoId": "pab0-pb",
+      "x": 0.37,
+      "y": 0.83,
+      "alias": [
+        "DCO",
+        "Computación"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "a5",
+      "nombre": "Secretaría de Extensión (SECB)",
+      "tipo": "secretaria",
+      "pisoId": "pab0-pb",
+      "x": 0.58,
+      "y": 0.83,
+      "alias": [
+        "SECB"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "b1",
+      "nombre": "Departamento de Física (FIS)",
+      "tipo": "departamento",
+      "pisoId": "pab1-pb",
+      "x": 0.22,
+      "y": 0.3,
+      "alias": [
+        "FIS",
+        "Física"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "b2",
+      "nombre": "Áreas Técnicas (ATEC)",
+      "tipo": "tecnica",
+      "pisoId": "pab1-pb",
+      "x": 0.14,
+      "y": 0.7,
+      "alias": [
+        "ATEC"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "b3",
+      "nombre": "CECEN (Centro de Estudiantes)",
+      "tipo": "otro",
+      "pisoId": "pab1-pb",
+      "x": 0.33,
+      "y": 0.78,
+      "alias": [
+        "CECEN"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "b4",
+      "nombre": "Aula Magna",
+      "tipo": "comun",
+      "pisoId": "pab1-piso1",
+      "x": 0.58,
+      "y": 0.5,
+      "alias": [
+        "Aula Magna"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "b5",
+      "nombre": "Departamento de Física (FIS)",
+      "tipo": "departamento",
+      "pisoId": "pab1-piso1",
+      "x": 0.4,
+      "y": 0.2,
+      "alias": [
+        "FIS"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "b6",
+      "nombre": "Departamento de Química Orgánica (QOR)",
+      "tipo": "departamento",
+      "pisoId": "pab1-piso1",
+      "x": 0.2,
+      "y": 0.05,
+      "alias": [
+        "QOR"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "c1",
+      "nombre": "Decanato (DECA)",
+      "tipo": "secretaria",
+      "pisoId": "pab2-pb",
+      "x": 0.06,
+      "y": 0.45,
+      "alias": [
+        "DECA"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "c2",
+      "nombre": "Patio central",
+      "tipo": "comun",
+      "pisoId": "pab2-pb",
+      "x": 0.5,
+      "y": 0.5,
+      "alias": [
+        "patio"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "d1",
+      "nombre": "Depto. Cs. de la Atmósfera y los Océanos (DCAO)",
+      "tipo": "departamento",
+      "pisoId": "pab2-piso2",
+      "x": 0.93,
+      "y": 0.1,
+      "alias": [
+        "DCAO"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "d2",
+      "nombre": "Depto. Fisiología, Biología Molecular y Celular (FBMC)",
+      "tipo": "departamento",
+      "pisoId": "pab2-piso2",
+      "x": 0.78,
+      "y": 0.4,
+      "alias": [
+        "FBMC"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "d3",
+      "nombre": "CEFIEC",
+      "tipo": "carrera",
+      "pisoId": "pab2-piso2",
+      "x": 0.18,
+      "y": 0.06,
+      "alias": [
+        "CEFIEC"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "e1",
+      "nombre": "INQUIMAE",
+      "tipo": "instituto",
+      "pisoId": "pab2-piso3",
+      "x": 0.9,
+      "y": 0.45,
+      "alias": [
+        "INQUIMAE"
+      ],
+      "descripcion": "Instituto que ocupa el sector este del piso.",
+      "confianza": "aprox"
+    },
+    {
+      "id": "e2",
+      "nombre": "Departamento de Química Orgánica (QOR)",
+      "tipo": "departamento",
+      "pisoId": "pab2-piso3",
+      "x": 0.12,
+      "y": 0.5,
+      "alias": [
+        "QOR"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "e3",
+      "nombre": "Departamento de Química Inorgánica (QIN)",
+      "tipo": "departamento",
+      "pisoId": "pab2-piso3",
+      "x": 0.85,
+      "y": 0.12,
+      "alias": [
+        "QIN"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "e4",
+      "nombre": "Carrera de Ciencias Biológicas (CCCB)",
+      "tipo": "carrera",
+      "pisoId": "pab2-piso3",
+      "x": 0.5,
+      "y": 0.92,
+      "alias": [
+        "CCCB"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "f1",
+      "nombre": "Departamento de Química Biológica (QBI)",
+      "tipo": "departamento",
+      "pisoId": "pab2-piso4",
+      "x": 0.1,
+      "y": 0.5,
+      "alias": [
+        "QBI"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "f2",
+      "nombre": "Depto. Biodiversidad y Biología Experimental (BBE)",
+      "tipo": "departamento",
+      "pisoId": "pab2-piso4",
+      "x": 0.6,
+      "y": 0.06,
+      "alias": [
+        "BBE"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    },
+    {
+      "id": "f3",
+      "nombre": "Departamento de Ecología, Genética y Evolución (EGE)",
+      "tipo": "departamento",
+      "pisoId": "pab2-piso4",
+      "x": 0.4,
+      "y": 0.94,
+      "alias": [
+        "EGE"
+      ],
+      "descripcion": "",
+      "confianza": "aprox"
+    }
+  ]
+}
