@@ -703,6 +703,58 @@
       "x": 0.7127211457455771,
       "y": 0.37220259128386335,
       "confianza": "exacta"
+    },
+    {
+      "id": "emq56wnn6aan",
+      "nombre": "Secretaría Técnica",
+      "tipo": "secretaria",
+      "alias": [
+        "STEC"
+      ],
+      "descripcion": "Secretaría Técnica en planta baja del Pabellón 0+inf",
+      "pisoId": "pab0-pb",
+      "x": 0.13322091062394603,
+      "y": 0.5970695970695971,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56xflohw0",
+      "nombre": "Secretaría Hábitat",
+      "tipo": "secretaria",
+      "alias": [
+        "SHAB"
+      ],
+      "descripcion": "Secretaría Hábitat en planta baja del pabellón 0+inf.",
+      "pisoId": "pab0-pb",
+      "x": 0.15261382799325462,
+      "y": 0.6007326007326007,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56y1kfbb9",
+      "nombre": "Áreas Técnicas",
+      "tipo": "secretaria",
+      "alias": [
+        "ATEC"
+      ],
+      "descripcion": "Áreas Técnicas en planta baja del pabellón 0+inf",
+      "pisoId": "pab0-pb",
+      "x": 0.2799325463743676,
+      "y": 0.6117216117216118,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56yxa48xg",
+      "nombre": "Secretaría Técnica",
+      "tipo": "secretaria",
+      "alias": [
+        "STEC"
+      ],
+      "descripcion": "Secretaría Técnica en planta baja del pabellón 0+inf.",
+      "pisoId": "pab0-pb",
+      "x": 0.524451939291737,
+      "y": 0.6971916971916972,
+      "confianza": "exacta"
     }
   ]
 }
