@@ -377,43 +377,45 @@
     },
     {
       "id": "b1",
-      "nombre": "Departamento de Física (FIS)",
+      "nombre": "Departamento de Física",
       "tipo": "departamento",
       "pisoId": "pab1-pb",
-      "x": 0.22,
-      "y": 0.3,
+      "x": 0.37544483985765126,
+      "y": 0.1607795371498173,
       "alias": [
         "FIS",
         "Física"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "b2",
-      "nombre": "Áreas Técnicas (ATEC)",
+      "nombre": "Sala de Ventilación",
       "tipo": "tecnica",
       "pisoId": "pab1-pb",
-      "x": 0.14,
-      "y": 0.7,
+      "x": 0.13434163701067617,
+      "y": 0.4494518879415347,
       "alias": [
-        "ATEC"
+        "ATEC",
+        "Áreas Técnicas"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "b3",
-      "nombre": "CECEN (Centro de Estudiantes)",
+      "nombre": "CECEN",
       "tipo": "otro",
       "pisoId": "pab1-pb",
-      "x": 0.33,
-      "y": 0.78,
+      "x": 0.3932384341637011,
+      "y": 0.45797807551766134,
       "alias": [
-        "CECEN"
+        "CECEN Exactas",
+        "Centro de Estudiantes"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "b4",
@@ -853,6 +855,32 @@
       "pisoId": "pab0-piso1",
       "x": 0.44970414201183434,
       "y": 0.1579617834394904,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq59jvqgfef",
+      "nombre": "Areas Técnicas",
+      "tipo": "tecnica",
+      "alias": [
+        "ATEC"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-subsuelo",
+      "x": 0.8454157782515992,
+      "y": 0.45035460992907805,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq59mb7l8e2",
+      "nombre": "Secretaría Hábitat",
+      "tipo": "secretaria",
+      "alias": [
+        "SHAB"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.5115658362989324,
+      "y": 0.2679658952496955,
       "confianza": "exacta"
     }
   ]
