@@ -316,7 +316,8 @@
       "x": 0.3642495784148398,
       "y": 0.18925518925518925,
       "alias": [
-        "IC"
+        "IC",
+        "Instituto de Cálculo"
       ],
       "descripcion": "",
       "confianza": "exacta"
@@ -754,6 +755,104 @@
       "pisoId": "pab0-pb",
       "x": 0.524451939291737,
       "y": 0.6971916971916972,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5796jwhq3",
+      "nombre": "Secretaría Hábitat",
+      "tipo": "secretaria",
+      "alias": [
+        "SHAB"
+      ],
+      "descripcion": "Secretaría Hábitat en planta baja del pabellón 0+inf.",
+      "pisoId": "pab0-pb",
+      "x": 0.8785834738617201,
+      "y": 0.5653235653235653,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq597kap3h3",
+      "nombre": "Instituto del Cálculo (IC)",
+      "tipo": "instituto",
+      "alias": [
+        "IC",
+        "Instituto de Cálculo"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-piso1",
+      "x": 0.10312764158918004,
+      "y": 0.6522292993630574,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq598yd1okd",
+      "nombre": "Departamento de Computación",
+      "tipo": "departamento",
+      "alias": [
+        "DC",
+        "DCO",
+        "Computación"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-piso1",
+      "x": 0.5452240067624683,
+      "y": 0.6993630573248408,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq599efrmfo",
+      "nombre": "Departamento de Computación",
+      "tipo": "departamento",
+      "alias": [
+        "DC",
+        "DCO",
+        "Computación"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-piso1",
+      "x": 0.6796280642434489,
+      "y": 0.5070063694267516,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq59a2dtr3f",
+      "nombre": "Departamento de Atmósfera",
+      "tipo": "departamento",
+      "alias": [
+        "DCAO",
+        "Atmósfera"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-piso1",
+      "x": 0.643279797125951,
+      "y": 0.12993630573248405,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq59az1bfal",
+      "nombre": "Instituto del Cálculo (IC)",
+      "tipo": "instituto",
+      "alias": [
+        "IC",
+        "Instituto de Cálculo"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-piso1",
+      "x": 0.4885883347421809,
+      "y": 0.3528662420382166,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq59bei9wgv",
+      "nombre": "Áreas Técnicas",
+      "tipo": "tecnica",
+      "alias": [
+        "ATEC"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-piso1",
+      "x": 0.44970414201183434,
+      "y": 0.1579617834394904,
       "confianza": "exacta"
     }
   ]

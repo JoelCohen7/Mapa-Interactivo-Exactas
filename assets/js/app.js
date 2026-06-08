@@ -169,7 +169,10 @@ function dibujarMarcadores() {
       title: e.nombre,
     }).addTo(markerLayer);
 
-    m.bindPopup(popupHTML(e));
+    m.bindPopup(popupHTML(e), { autoClose: false });
+    m.on('click', () => {
+      markerLayer.eachLayer(l => { if (l !== m && l.isPopupOpen()) l.closePopup(); });
+    });
     m.on('popupopen', () => engancharPopup(e.id));
     m.on('dragend', () => {
       const frac = latLngAFrac(piso, m.getLatLng());
@@ -242,10 +245,10 @@ function construirLeyenda() {
 
 function buscar(q) {
   const cont = document.getElementById('results');
-  q = q.trim().toLowerCase();
+  q = q.trim().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
   if (!q) { cont.hidden = true; cont.innerHTML = ''; return; }
 
-  const norm = s => (s || '').toLowerCase();
+  const norm = s => (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 
   // Expandir via diccionario: códigos que matchean el query por nombre completo
   const dicMatchCodigos = new Set(
@@ -286,9 +289,26 @@ function buscar(q) {
   let html = '';
   Object.entries(groups).forEach(([pabellon, items]) => {
     html += `<div class="r-group-label">${escapeHtml(pabellon)}</div>`;
+
+    // Agrupar entradas con mismo nombre en el mismo piso
+    const merged = [];
+    const seenKey = new Map();
     items.forEach(({ e, pisoNombre }) => {
-      html += `<div class="result" data-goto="${e.id}">
-        <div class="r-name">${escapeHtml(e.nombre)}</div>
+      const key = e.nombre.toLowerCase() + '|' + e.pisoId;
+      if (seenKey.has(key)) {
+        merged[seenKey.get(key)].ids.push(e.id);
+      } else {
+        seenKey.set(key, merged.length);
+        merged.push({ e, pisoNombre, ids: [e.id] });
+      }
+    });
+
+    merged.forEach(({ e, pisoNombre, ids }) => {
+      const badge = ids.length > 1
+        ? ` <span style="font-size:0.7em;background:#e8f0fe;color:#3b5bdb;border-radius:4px;padding:1px 5px;margin-left:4px">${ids.length} ubicaciones</span>`
+        : '';
+      html += `<div class="result" data-goto="${ids.join(',')}">
+        <div class="r-name">${escapeHtml(e.nombre)}${badge}</div>
         <div class="r-loc">${escapeHtml(pisoNombre)}</div>
       </div>`;
     });
@@ -310,19 +330,37 @@ function buscar(q) {
   });
 }
 
-async function irAEntrada(id) {
-  const e = state.data.entradas.find(x => x.id === id);
-  if (!e) return;
-  if (e.pisoId !== state.currentPisoId) await cambiarPiso(e.pisoId);
+async function irAEntrada(idsStr) {
+  const ids = String(idsStr).split(',');
+  const first = state.data.entradas.find(x => x.id === ids[0]);
+  if (!first) return;
+  markerLayer.eachLayer(l => { if (l.isPopupOpen()) l.closePopup(); });
+  if (first.pisoId !== state.currentPisoId) await cambiarPiso(first.pisoId);
   const piso = pisoActual();
-  // zoom in to at least level 0 (1:1 pixels) so the marker is clearly visible
-  map.flyTo(fracALatLng(piso, e.x, e.y), Math.max(map.getZoom(), 0));
-  const m = state.markers[id];
-  if (m) {
-    m.openPopup();
-    const el = m.getElement()?.querySelector('.pin');
-    if (el) { el.classList.add('pulse'); setTimeout(() => el.classList.remove('pulse'), 3500); }
+
+  if (ids.length === 1) {
+    map.flyTo(fracALatLng(piso, first.x, first.y), Math.max(map.getZoom(), 0));
+    const m = state.markers[ids[0]];
+    if (m) {
+      m.openPopup();
+      const el = m.getElement()?.querySelector('.pin');
+      if (el) { el.classList.add('pulse'); setTimeout(() => el.classList.remove('pulse'), 3500); }
+    }
+  } else {
+    // Múltiples marcadores en el mismo piso: volar al centroide y pulsar todos
+    const entries = ids.map(id => state.data.entradas.find(x => x.id === id)).filter(Boolean);
+    const cx = entries.reduce((s, e) => s + e.x, 0) / entries.length;
+    const cy = entries.reduce((s, e) => s + e.y, 0) / entries.length;
+    map.flyTo(fracALatLng(piso, cx, cy), Math.max(map.getZoom(), 0));
+    ids.forEach(id => {
+      const m = state.markers[id];
+      if (!m) return;
+      m.openPopup();
+      const el = m.getElement()?.querySelector('.pin');
+      if (el) { el.classList.add('pulse'); setTimeout(() => el.classList.remove('pulse'), 3500); }
+    });
   }
+
   document.getElementById('results').hidden = true;
   document.getElementById('search').value = '';
 }
