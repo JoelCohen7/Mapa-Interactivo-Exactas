@@ -31,6 +31,10 @@
       "label": "Área común / exterior",
       "color": "#9ca3af"
     },
+    "laboratorio": {
+      "label": "Laboratorio",
+      "color": "#14b8a6"
+    },
     "otro": {
       "label": "Otro / a definir",
       "color": "#ec4899"
@@ -484,16 +488,17 @@
     },
     {
       "id": "d1",
-      "nombre": "Depto. Cs. de la Atmósfera y los Océanos (DCAO)",
+      "nombre": "Departamento de  Ciencias de la Atmósfera y los Océanos",
       "tipo": "departamento",
       "pisoId": "pab2-piso2",
-      "x": 0.93,
-      "y": 0.1,
+      "x": 0.8926174496644296,
+      "y": 0.16552511415525117,
       "alias": [
-        "DCAO"
+        "DCAO",
+        "Depto. Cs. de la Atmósfera y los Océanos"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "d2",
@@ -513,17 +518,17 @@
       "nombre": "CEFIEC",
       "tipo": "carrera",
       "pisoId": "pab2-piso2",
-      "x": 0.18,
-      "y": 0.06,
+      "x": 0.10654362416107382,
+      "y": 0.14497716894977164,
       "alias": [
         "CEFIEC"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "e1",
-      "nombre": "INQUIMAE",
+      "nombre": "Instituto de Quimica Fisica de los Materiales, Medio Ambiente y Energía",
       "tipo": "instituto",
       "pisoId": "pab2-piso3",
       "x": 0.9,
@@ -531,86 +536,73 @@
       "alias": [
         "INQUIMAE"
       ],
-      "descripcion": "Instituto que ocupa el sector este del piso.",
-      "confianza": "aprox"
-    },
-    {
-      "id": "e2",
-      "nombre": "Departamento de Química Orgánica (QOR)",
-      "tipo": "departamento",
-      "pisoId": "pab2-piso3",
-      "x": 0.12,
-      "y": 0.5,
-      "alias": [
-        "QOR"
-      ],
       "descripcion": "",
       "confianza": "aprox"
     },
     {
       "id": "e3",
-      "nombre": "Departamento de Química Inorgánica (QIN)",
+      "nombre": "Química Inorgánica",
       "tipo": "departamento",
       "pisoId": "pab2-piso3",
-      "x": 0.85,
-      "y": 0.12,
+      "x": 0.8362068965517241,
+      "y": 0.13022700119474317,
       "alias": [
         "QIN"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "e4",
-      "nombre": "Carrera de Ciencias Biológicas (CCCB)",
+      "nombre": "Carrera de Ciencias Biológicas",
       "tipo": "carrera",
       "pisoId": "pab2-piso3",
-      "x": 0.5,
-      "y": 0.92,
+      "x": 0.5465517241379311,
+      "y": 0.7096774193548387,
       "alias": [
         "CCCB"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "f1",
-      "nombre": "Departamento de Química Biológica (QBI)",
+      "nombre": "Química Biológica",
       "tipo": "departamento",
       "pisoId": "pab2-piso4",
-      "x": 0.1,
-      "y": 0.5,
+      "x": 0.10481099656357389,
+      "y": 0.3962732919254658,
       "alias": [
         "QBI"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "f2",
-      "nombre": "Depto. Biodiversidad y Biología Experimental (BBE)",
+      "nombre": "Biodiversidad y Biología Experimental",
       "tipo": "departamento",
       "pisoId": "pab2-piso4",
-      "x": 0.6,
-      "y": 0.06,
+      "x": 0.7302405498281787,
+      "y": 0.08695652173913049,
       "alias": [
         "BBE"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "f3",
-      "nombre": "Departamento de Ecología, Genética y Evolución (EGE)",
+      "nombre": "Departamento de Ecología, Genética y Evolución",
       "tipo": "departamento",
       "pisoId": "pab2-piso4",
-      "x": 0.4,
-      "y": 0.94,
+      "x": 0.4699312714776632,
+      "y": 0.7018633540372671,
       "alias": [
         "EGE"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "emq56kl2f01k",
@@ -881,6 +873,384 @@
       "pisoId": "pab1-pb",
       "x": 0.5115658362989324,
       "y": 0.2679658952496955,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq59xaiwm4x",
+      "nombre": "Planta Geotermia y Termomecánica",
+      "tipo": "otro",
+      "alias": [],
+      "descripcion": "",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.7144060657118787,
+      "y": 0.5771495877502945,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq59y8xsu8t",
+      "nombre": "Laboratorio de Bajas Temperaturas",
+      "tipo": "laboratorio",
+      "alias": [
+        "Lab. de Bajas Temperaturas",
+        "Bajas Temperaturas"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.08185053380782918,
+      "y": 0.19732034104750307,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5a04ncdm5",
+      "nombre": "Laboratorio Líquidos Criogénicos",
+      "tipo": "laboratorio",
+      "alias": [
+        "Lab. Líquidos Criogénicos",
+        "Lab Líquidos Criogénicos",
+        "Líquidos Criogénicos"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.18416370106761565,
+      "y": 0.19732034104750307,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5a11pnbua",
+      "nombre": "Laboratorio Física Aplicada 1",
+      "tipo": "laboratorio",
+      "alias": [
+        "Física Aplicada 1"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.1903914590747331,
+      "y": 0.31303288672350793,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5a1kvycpf",
+      "nombre": "Laboratorio Física Aplicada 3",
+      "tipo": "laboratorio",
+      "alias": [
+        "Física Aplicada 3"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.26334519572953735,
+      "y": 0.2685749086479903,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5a1vzym82",
+      "nombre": "Laboratorio Física Aplicada 2",
+      "tipo": "laboratorio",
+      "alias": [
+        "Física Aplicada 2"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.2611209964412811,
+      "y": 0.3215590742996346,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5a26ffa33",
+      "nombre": "Laboratorio Física Aplicada 4",
+      "tipo": "laboratorio",
+      "alias": [
+        "Física Aplicada 4"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.3087188612099644,
+      "y": 0.3160779537149817,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5a2hn4k5w",
+      "nombre": "Laboratorio Emprendimientos 3A",
+      "tipo": "secretaria",
+      "alias": [
+        "Emprendimientos 3A"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.25889679715302494,
+      "y": 0.3599269183922046,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5a2p9ommt",
+      "nombre": "Laboratorio Emprendimientos 3B",
+      "tipo": "laboratorio",
+      "alias": [
+        "Emprendimientos 3B"
+      ],
+      "descripcion": "",
+      "pisoId": "pab1-pb",
+      "x": 0.31761565836298933,
+      "y": 0.3574908647990256,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5cubz8nqf",
+      "nombre": "Geología",
+      "tipo": "departamento",
+      "alias": [
+        "GEO"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso1",
+      "x": 0.44305901911886947,
+      "y": 0.1223776223776224,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5cust949x",
+      "nombre": "Química Inorgánica",
+      "tipo": "departamento",
+      "alias": [
+        "QIN"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso1",
+      "x": 0.10058187863674148,
+      "y": 0.7261072261072261,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5cvfb084c",
+      "nombre": "Geología",
+      "tipo": "departamento",
+      "alias": [
+        "GEO"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-entrepiso",
+      "x": 0.43828715365239296,
+      "y": 0.10369487485101314,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5cw1jhlsu",
+      "nombre": "Fisiología, Biología Molecular y Celular",
+      "tipo": "departamento",
+      "alias": [
+        "FBMC"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-entrepiso",
+      "x": 0.7523089840470193,
+      "y": 0.48986889153754465,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5cwsjqxt9",
+      "nombre": "Ecología, Genética y Evolución",
+      "tipo": "departamento",
+      "alias": [
+        "EGE"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.09395973154362416,
+      "y": 0.22488584474885842,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5cxqb1awn",
+      "nombre": "Química Biológica",
+      "tipo": "departamento",
+      "alias": [
+        "QBI"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.19714765100671142,
+      "y": 0.14383561643835618,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5cye93knq",
+      "nombre": "Fisiología, Biología Molecular y Celular",
+      "tipo": "departamento",
+      "alias": [
+        "FBMC"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.7223154362416108,
+      "y": 0.15639269406392697,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5czmb84ec",
+      "nombre": "Biodiversidad y Biología Experimental",
+      "tipo": "departamento",
+      "alias": [
+        "BBE"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.8657718120805369,
+      "y": 0.4417808219178082,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d01kbfa7",
+      "nombre": "Ecología, Genética y Evolución",
+      "tipo": "departamento",
+      "alias": [
+        "EGE"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.9177852348993288,
+      "y": 0.6952054794520548,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d0i0gbrc",
+      "nombre": "Fisiología, Biología Molecular y Celular",
+      "tipo": "departamento",
+      "alias": [
+        "FBMC"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.8162751677852349,
+      "y": 0.6837899543378996,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d0vzpvws",
+      "nombre": "Ecología Genética y Evolución",
+      "tipo": "departamento",
+      "alias": [
+        "EGE"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.7743288590604027,
+      "y": 0.6860730593607306,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d1hqld1m",
+      "nombre": "Biodiversidad y Biología Experimental",
+      "tipo": "departamento",
+      "alias": [
+        "BBE"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.5310402684563759,
+      "y": 0.7111872146118721,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d1vm5zc7",
+      "nombre": "Fisiología, Biología Molecular y Celular",
+      "tipo": "departamento",
+      "alias": [
+        "FBMC"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.5050335570469798,
+      "y": 0.7077625570776256,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d2bqpncg",
+      "nombre": "Quimica Biológica",
+      "tipo": "departamento",
+      "alias": [
+        "QBI"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.33053691275167785,
+      "y": 0.7054794520547945,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d2ped066",
+      "nombre": "Química Orgánica",
+      "tipo": "departamento",
+      "alias": [
+        "QOR"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.2525167785234899,
+      "y": 0.704337899543379,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d33mwukl",
+      "nombre": "Química Biológica",
+      "tipo": "departamento",
+      "alias": [
+        "QBI"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.17114093959731544,
+      "y": 0.7077625570776256,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d3bv7k5g",
+      "nombre": "Química Orgánica",
+      "tipo": "departamento",
+      "alias": [
+        "QOR"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso2",
+      "x": 0.04865771812080537,
+      "y": 0.6735159817351598,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d3zaqmw5",
+      "nombre": "Química Orgánica",
+      "tipo": "departamento",
+      "alias": [
+        "QOR"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso3",
+      "x": 0.23879310344827587,
+      "y": 0.12186379928315416,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d5ivpcai",
+      "nombre": "Química Inorgánica",
+      "tipo": "departamento",
+      "alias": [
+        "QIN"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso3",
+      "x": 0.8353448275862069,
+      "y": 0.7120669056152927,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq5d668gbzk",
+      "nombre": "Química Orgánica",
+      "tipo": "departamento",
+      "alias": [
+        "QOR"
+      ],
+      "descripcion": "",
+      "pisoId": "pab2-piso3",
+      "x": 0.2396551724137931,
+      "y": 0.7108721624850657,
       "confianza": "exacta"
     }
   ]
