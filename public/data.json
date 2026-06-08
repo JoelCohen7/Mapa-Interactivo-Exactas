@@ -313,66 +313,66 @@
       "nombre": "Instituto del Cálculo (IC)",
       "tipo": "instituto",
       "pisoId": "pab0-pb",
-      "x": 0.07,
-      "y": 0.13,
+      "x": 0.3642495784148398,
+      "y": 0.18925518925518925,
       "alias": [
         "IC"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "a2",
       "nombre": "Secretaría General (SGRAL)",
       "tipo": "secretaria",
       "pisoId": "pab0-pb",
-      "x": 0.23,
-      "y": 0.27,
+      "x": 0.33895446880269814,
+      "y": 0.4566544566544567,
       "alias": [
         "SGRAL"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "a3",
       "nombre": "Secretaría Académica (SACA)",
       "tipo": "secretaria",
       "pisoId": "pab0-pb",
-      "x": 0.9,
-      "y": 0.1,
+      "x": 0.8962900505902193,
+      "y": 0.19169719169719168,
       "alias": [
         "SACA"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "a4",
       "nombre": "Departamento de Computación (DCO)",
       "tipo": "departamento",
       "pisoId": "pab0-pb",
-      "x": 0.37,
-      "y": 0.83,
+      "x": 0.3962900505902192,
+      "y": 0.6056166056166057,
       "alias": [
         "DCO",
         "Computación"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "a5",
       "nombre": "Secretaría de Extensión (SECB)",
       "tipo": "secretaria",
       "pisoId": "pab0-pb",
-      "x": 0.58,
-      "y": 0.83,
+      "x": 0.6475548060708263,
+      "y": 0.5396825396825398,
       "alias": [
         "SECB"
       ],
       "descripcion": "",
-      "confianza": "aprox"
+      "confianza": "exacta"
     },
     {
       "id": "b1",
@@ -608,6 +608,101 @@
       ],
       "descripcion": "",
       "confianza": "aprox"
+    },
+    {
+      "id": "emq56kl2f01k",
+      "nombre": "Áreas Técnicas",
+      "tipo": "tecnica",
+      "alias": [
+        "ATEC"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.7860151642796968,
+      "y": 0.18963486454652534,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56lpjeycb",
+      "nombre": "Atmósfera",
+      "tipo": "departamento",
+      "alias": [
+        "DCAO"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.3226621735467565,
+      "y": 0.37691401648998824,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56nd4c28i",
+      "nombre": "Depósito Departamento de Computación",
+      "tipo": "otro",
+      "alias": [
+        "DCO",
+        "Depósito DC",
+        "Depósito Computación"
+      ],
+      "descripcion": "Depósito del Departamento de Computación",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.14321819713563605,
+      "y": 0.47938751472320373,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56o5sb4c3",
+      "nombre": "Depósito Instituto de Cálculo",
+      "tipo": "otro",
+      "alias": [
+        "Depóstio IC",
+        "IC",
+        "Depósito Cálculo"
+      ],
+      "descripcion": "Depósito del Instituto de Cálculo",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.2325189553496209,
+      "y": 0.5771495877502945,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56p0bvy6m",
+      "nombre": "Secretaría Hábitat",
+      "tipo": "secretaria",
+      "alias": [
+        "SHAB",
+        "Sec. Hábitat"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.5172704296545914,
+      "y": 0.5606595995288575,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56pi0xts0",
+      "nombre": "Secretaría Técnica",
+      "tipo": "secretaria",
+      "alias": [
+        "STEC",
+        "Sec. Técnica"
+      ],
+      "descripcion": "",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.6133108677337826,
+      "y": 0.5736160188457009,
+      "confianza": "exacta"
+    },
+    {
+      "id": "emq56q1cr57u",
+      "nombre": "Sala de Tanques",
+      "tipo": "otro",
+      "alias": [],
+      "descripcion": "",
+      "pisoId": "pab0-subsuelo",
+      "x": 0.7127211457455771,
+      "y": 0.37220259128386335,
+      "confianza": "exacta"
     }
   ]
 }
