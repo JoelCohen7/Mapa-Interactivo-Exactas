@@ -254,7 +254,81 @@
       "id": "pab1-piso2",
       "pabellon": "Pabellón 1",
       "piso": "Segundo piso",
-      "imagen": "planos/pab1-piso2.png"
+      "imagen": "planos/pab1-piso2.png",
+      "bases": [
+        {
+          "id": "color",
+          "label": "Coloreado",
+          "imagen": "planos/pab1-piso2.png"
+        },
+        {
+          "id": "arq",
+          "label": "Arquitectura",
+          "imagen": "capas/pab1-piso2/base_arq.png"
+        }
+      ],
+      "capas": [
+        {
+          "id": "bocas_datos",
+          "label": "Bocas Datos",
+          "color": "#2563eb",
+          "imagen": "capas/pab1-piso2/bocas_datos.png"
+        },
+        {
+          "id": "bocas_tel_ip",
+          "label": "Bocas Tel IP",
+          "color": "#16a34a",
+          "imagen": "capas/pab1-piso2/bocas_tel_ip.png"
+        },
+        {
+          "id": "bocas_tel_analog",
+          "label": "Bocas Tel Analógico",
+          "color": "#9333ea",
+          "imagen": "capas/pab1-piso2/bocas_tel_analog.png"
+        },
+        {
+          "id": "bandejas",
+          "label": "Bandejas",
+          "color": "#0891b2",
+          "imagen": "capas/pab1-piso2/bandejas.png"
+        },
+        {
+          "id": "cable_canal",
+          "label": "Cable canal",
+          "color": "#ca8a04",
+          "imagen": "capas/pab1-piso2/cable_canal.png"
+        },
+        {
+          "id": "canos",
+          "label": "Caños",
+          "color": "#65a30d",
+          "imagen": "capas/pab1-piso2/canos.png"
+        },
+        {
+          "id": "racks",
+          "label": "Racks",
+          "color": "#be123c",
+          "imagen": "capas/pab1-piso2/racks.png"
+        },
+        {
+          "id": "pases",
+          "label": "Pases",
+          "color": "#0d9488",
+          "imagen": "capas/pab1-piso2/pases.png"
+        },
+        {
+          "id": "cajas",
+          "label": "Cajas",
+          "color": "#db2777",
+          "imagen": "capas/pab1-piso2/cajas.png"
+        },
+        {
+          "id": "sanitarios",
+          "label": "Sanitarios",
+          "color": "#0284c7",
+          "imagen": "capas/pab1-piso2/sanitarios.png"
+        }
+      ]
     },
     {
       "id": "pab2-subsuelo",

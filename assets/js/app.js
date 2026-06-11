@@ -22,9 +22,13 @@ const state = {
   editingId: null,     // id en edición (o null al crear)
   newPos: null,        // {x,y} al crear por click
   dictEditingCode: null, // código del diccionario en edición (o null al crear)
+  activeBaseId: 'color', // fondo activo: 'color' (plano coloreado) | 'arq' (arquitectura PDF)
+  activeCapas: new Set(),// ids de capas de red visibles (apiladas)
+  baseOverlay: null,     // L.imageOverlay del fondo actual
+  capaOverlays: {},      // capaId -> L.imageOverlay
 };
 
-let map, overlayLayer, markerLayer;
+let map, markerLayer;
 
 /* ---------- Utilidades de datos ---------- */
 
@@ -134,20 +138,108 @@ function cargarImagen(piso) {
   });
 }
 
+function rutaPublic(rel) { return 'public/' + rel; }
+
+// Imagen del fondo activo para un piso (coloreado o arquitectura).
+// Si el piso no define `bases`, usa la imagen única de siempre.
+function baseImagenActual(piso) {
+  if (piso.bases && piso.bases.length) {
+    const b = piso.bases.find(x => x.id === state.activeBaseId) || piso.bases[0];
+    return rutaPublic(b.imagen);
+  }
+  return rutaImagen(piso);
+}
+
 async function cambiarPiso(pisoId) {
   state.currentPisoId = pisoId;
   const piso = pisoActual();
+  // El tamaño canónico (donde viven las fracciones de los marcadores) es el del
+  // plano base de siempre; todas las capas se generan a ese mismo tamaño.
   const size = await cargarImagen(piso);
   const bounds = [[0, 0], [size.h, size.w]];
 
-  if (overlayLayer) map.removeLayer(overlayLayer);
-  overlayLayer = L.imageOverlay(rutaImagen(piso), bounds).addTo(map);
+  // Limpiar fondo y capas anteriores
+  if (state.baseOverlay) { map.removeLayer(state.baseOverlay); state.baseOverlay = null; }
+  Object.values(state.capaOverlays).forEach(l => map.removeLayer(l));
+  state.capaOverlays = {};
+
+  // Fondo activo
+  state.baseOverlay = L.imageOverlay(baseImagenActual(piso), bounds).addTo(map);
   map.fitBounds(bounds);
   map.setMaxBounds(bounds);
 
+  // Re-aplicar capas que estén activas y existan en este piso
+  (piso.capas || []).forEach(c => {
+    if (state.activeCapas.has(c.id)) {
+      state.capaOverlays[c.id] = L.imageOverlay(rutaPublic(c.imagen), bounds).addTo(map);
+    }
+  });
+
   document.getElementById('floor-title').textContent = `${piso.pabellon} · ${piso.piso}`;
   sincronizarSelectores();
+  construirPanelCapas();
   dibujarMarcadores();
+}
+
+// Cambia el fondo (coloreado <-> arquitectura) sin reencuadrar el mapa.
+function cambiarBase(baseId) {
+  state.activeBaseId = baseId;
+  const piso = pisoActual();
+  const s = state.imgSize[piso.id];
+  const bounds = [[0, 0], [s.h, s.w]];
+  if (state.baseOverlay) map.removeLayer(state.baseOverlay);
+  state.baseOverlay = L.imageOverlay(baseImagenActual(piso), bounds).addTo(map);
+  state.baseOverlay.bringToBack(); // que el fondo quede debajo de las capas
+}
+
+// Prende/apaga una capa de red apilable.
+function toggleCapa(capa, on) {
+  const piso = pisoActual();
+  const s = state.imgSize[piso.id];
+  const bounds = [[0, 0], [s.h, s.w]];
+  if (on) {
+    state.activeCapas.add(capa.id);
+    if (!state.capaOverlays[capa.id]) {
+      state.capaOverlays[capa.id] = L.imageOverlay(rutaPublic(capa.imagen), bounds).addTo(map);
+    }
+  } else {
+    state.activeCapas.delete(capa.id);
+    if (state.capaOverlays[capa.id]) {
+      map.removeLayer(state.capaOverlays[capa.id]);
+      delete state.capaOverlays[capa.id];
+    }
+  }
+}
+
+// Construye el panel "Capas del plano": switch de fondo + checkboxes de capas.
+function construirPanelCapas() {
+  const block = document.getElementById('capas-block');
+  const piso = pisoActual();
+  if (!piso.capas || !piso.capas.length) { block.hidden = true; return; }
+  block.hidden = false;
+
+  // Switch de fondo
+  const sw = document.getElementById('base-switch');
+  sw.innerHTML = '';
+  (piso.bases || []).forEach(b => {
+    const lab = document.createElement('label');
+    lab.className = 'base-opt';
+    lab.innerHTML = `<input type="radio" name="base" value="${b.id}"
+      ${b.id === state.activeBaseId ? 'checked' : ''} /> ${b.label}`;
+    lab.querySelector('input').addEventListener('change', () => cambiarBase(b.id));
+    sw.appendChild(lab);
+  });
+
+  // Capas apilables
+  const lista = document.getElementById('capas-list');
+  lista.innerHTML = '';
+  piso.capas.forEach(c => {
+    const row = document.createElement('label');
+    row.innerHTML = `<input type="checkbox" ${state.activeCapas.has(c.id) ? 'checked' : ''} />
+      <span class="dot" style="background:${c.color}"></span> ${c.label}`;
+    row.querySelector('input').addEventListener('change', (ev) => toggleCapa(c, ev.target.checked));
+    lista.appendChild(row);
+  });
 }
 
 function dibujarMarcadores() {

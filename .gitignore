@@ -2,3 +2,6 @@
 node_modules/
 dist/
 *.log
+
+# Planos fuente (.dwg/.pdf) — pesados, no se publican
+Planos/

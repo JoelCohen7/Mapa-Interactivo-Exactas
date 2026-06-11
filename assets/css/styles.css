@@ -98,6 +98,19 @@ input[type="search"]:focus, select:focus, .modal input:focus, .modal textarea:fo
 }
 .legend .dot { width: 13px; height: 13px; border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 1px rgba(0,0,0,.15); flex: none; }
 
+/* Switch de fondo (coloreado / arquitectura) */
+.base-switch { display: flex; gap: 6px; margin-bottom: 10px; }
+.base-switch .base-opt {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 12.5px; cursor: pointer;
+  padding: 5px 9px; border-radius: 8px;
+  border: 1px solid rgba(0,0,0,.12); background: rgba(0,0,0,.02);
+}
+.base-switch .base-opt:has(input:checked) {
+  border-color: currentColor; background: rgba(59,91,219,.10); font-weight: 600;
+}
+.base-switch input { accent-color: #3b5bdb; }
+
 /* ---------- Buttons ---------- */
 .btn {
   font: inherit; font-weight: 600; font-size: 13px;
