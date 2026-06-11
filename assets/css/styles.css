@@ -110,6 +110,8 @@ input[type="search"]:focus, select:focus, .modal input:focus, .modal textarea:fo
   border-color: currentColor; background: rgba(59,91,219,.10); font-weight: 600;
 }
 .base-switch input { accent-color: #3b5bdb; }
+.legend label:has(input:disabled) { opacity: .42; cursor: default; }
+.capas-hint { margin: 0 0 6px; }
 
 /* ---------- Buttons ---------- */
 .btn {

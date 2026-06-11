@@ -22,7 +22,7 @@ const state = {
   editingId: null,     // id en edición (o null al crear)
   newPos: null,        // {x,y} al crear por click
   dictEditingCode: null, // código del diccionario en edición (o null al crear)
-  activeBaseId: 'color', // fondo activo: 'color' (plano coloreado) | 'arq' (arquitectura PDF)
+  activeBaseId: 'arq',   // fondo activo por defecto: 'arq' (arquitectura PDF) | 'color' (plano coloreado)
   activeCapas: new Set(),// ids de capas de red visibles (apiladas)
   baseOverlay: null,     // L.imageOverlay del fondo actual
   capaOverlays: {},      // capaId -> L.imageOverlay
@@ -187,9 +187,16 @@ function cambiarBase(baseId) {
   const piso = pisoActual();
   const s = state.imgSize[piso.id];
   const bounds = [[0, 0], [s.h, s.w]];
+  // El coloreado no alinea con las capas de red: al activarlo, apagarlas todas.
+  if (baseId === 'color') {
+    Object.values(state.capaOverlays).forEach(l => map.removeLayer(l));
+    state.capaOverlays = {};
+    state.activeCapas.clear();
+  }
   if (state.baseOverlay) map.removeLayer(state.baseOverlay);
   state.baseOverlay = L.imageOverlay(baseImagenActual(piso), bounds).addTo(map);
   state.baseOverlay.bringToBack(); // que el fondo quede debajo de las capas
+  construirPanelCapas();           // refrescar checkboxes (desmarcados / deshabilitados)
 }
 
 // Prende/apaga una capa de red apilable.
@@ -230,12 +237,19 @@ function construirPanelCapas() {
     sw.appendChild(lab);
   });
 
-  // Capas apilables
+  // Capas apilables. Con fondo "coloreado" se deshabilitan (no alinean con él).
+  const bloqueado = state.activeBaseId === 'color';
   const lista = document.getElementById('capas-list');
   lista.innerHTML = '';
+  if (bloqueado) {
+    const nota = document.createElement('p');
+    nota.className = 'hint capas-hint';
+    nota.textContent = 'Las capas de red solo se ven con el fondo «Arquitectura».';
+    lista.appendChild(nota);
+  }
   piso.capas.forEach(c => {
     const row = document.createElement('label');
-    row.innerHTML = `<input type="checkbox" ${state.activeCapas.has(c.id) ? 'checked' : ''} />
+    row.innerHTML = `<input type="checkbox" ${state.activeCapas.has(c.id) ? 'checked' : ''} ${bloqueado ? 'disabled' : ''} />
       <span class="dot" style="background:${c.color}"></span> ${c.label}`;
     row.querySelector('input').addEventListener('change', (ev) => toggleCapa(c, ev.target.checked));
     lista.appendChild(row);
