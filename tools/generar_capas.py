@@ -53,13 +53,75 @@ CAPAS = {
 
 # --- Config por piso --------------------------------------------------------
 # crop: [x0,y0,x1,y1] en px del render a REF_DPI. None = autodetectar por muros.
+_PAB1 = os.path.join(PLANOS, "Pab1", "Pab1-Bocas (2016).pdf")
+_PAB2 = os.path.join(PLANOS, "Pab2", "Pab2-Bocas (2016).pdf")
+
 FLOORS = {
+    # --- Pabellón 1 (4 páginas) ---
     "pab1-piso2": {
-        "pdf":  os.path.join(PLANOS, "Pab1", "Pab1-Bocas (2016).pdf"),
-        "page": 1,  # 2°Piso
+        "pdf": _PAB1, "page": 1,
         "colored": os.path.join(PUBLIC, "planos", "pab1-piso2.png"),
-        "crop": [132, 674, 2698, 1627],  # calibrado: muros alinean con el plano coloreado
+        "crop": [132, 674, 2698, 1627],
     },
+    "pab1-piso1": {
+        "pdf": _PAB1, "page": 2,
+        "colored": os.path.join(PUBLIC, "planos", "pab1-piso1.png"),
+        "crop": None,
+    },
+    "pab1-entrepiso": {
+        "pdf": _PAB1, "page": 3,
+        "colored": os.path.join(PUBLIC, "planos", "pab1-entrepiso.png"),
+        "crop": None,
+    },
+    "pab1-pb": {
+        "pdf": _PAB1, "page": 4,
+        "colored": os.path.join(PUBLIC, "planos", "pab1-pb.png"),
+        "crop": None,
+    },
+    # pab1-subsuelo: sin página en el PDF, se omite
+
+    # --- Pabellón 2 (8 páginas) ---
+    "pab2-piso4": {
+        "pdf": _PAB2, "page": 1,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-piso4.png"),
+        "crop": None,
+    },
+    "pab2-piso3": {
+        "pdf": _PAB2, "page": 2,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-piso3.png"),
+        "crop": None,
+    },
+    "pab2-piso2": {
+        "pdf": _PAB2, "page": 3,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-piso2.png"),
+        "crop": None,
+    },
+    "pab2-entrepiso": {
+        "pdf": _PAB2, "page": 4,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-entrepiso.png"),
+        "crop": None,
+    },
+    "pab2-piso1": {
+        "pdf": _PAB2, "page": 5,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-piso1.png"),
+        "crop": None,
+    },
+    "pab2-pb": {
+        "pdf": _PAB2, "page": 6,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-pb.png"),
+        "crop": None,
+    },
+    "pab2-entresuelo": {
+        "pdf": _PAB2, "page": 7,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-entresuelo.png"),
+        "crop": None,
+    },
+    "pab2-subsuelo": {
+        "pdf": _PAB2, "page": 8,
+        "colored": os.path.join(PUBLIC, "planos", "pab2-subsuelo.png"),
+        "crop": None,
+    },
+    # pab2-azotea: sin instalaciones en el PDF de bocas, se omite
 }
 
 
@@ -89,8 +151,10 @@ def render(pdf_path, page, predicado, dpi=REF_DPI, transp=True):
     cmd = ["pdftocairo", "-png", "-r", str(dpi),
            "-f", str(page), "-l", str(page), "-singlefile", tmp, base]
     if transp:
-        cmd.insert(3, "-transp")
-    subprocess.run(cmd, capture_output=True)
+        cmd.insert(2, "-transp")
+    result = subprocess.run(cmd, capture_output=True)
+    if result.returncode != 0:
+        raise RuntimeError(f"pdftocairo falló (rc={result.returncode}): {result.stderr.decode()[:200]}")
     img = Image.open(base + ".png").convert("RGBA")
     os.remove(tmp); os.remove(base + ".png")
     return img

@@ -1,0 +1,78 @@
+{
+  "pisoId": "pab2-entrepiso",
+  "crop": [
+    172,
+    471,
+    2860,
+    1777
+  ],
+  "base_arq": "capas/pab2-entrepiso/base_arq.png",
+  "capas": [
+    {
+      "id": "bocas_datos",
+      "label": "Bocas Datos",
+      "color": "#2563eb",
+      "imagen": "capas/pab2-entrepiso/bocas_datos.png"
+    },
+    {
+      "id": "bocas_tel_ip",
+      "label": "Bocas Tel IP",
+      "color": "#16a34a",
+      "imagen": "capas/pab2-entrepiso/bocas_tel_ip.png"
+    },
+    {
+      "id": "bocas_tel_analog",
+      "label": "Bocas Tel Analógico",
+      "color": "#9333ea",
+      "imagen": "capas/pab2-entrepiso/bocas_tel_analog.png"
+    },
+    {
+      "id": "bocas_tel_emerg",
+      "label": "Bocas Tel Emergencia",
+      "color": "#dc2626",
+      "imagen": "capas/pab2-entrepiso/bocas_tel_emerg.png"
+    },
+    {
+      "id": "fibra",
+      "label": "Fibra óptica",
+      "color": "#ea580c",
+      "imagen": "capas/pab2-entrepiso/fibra.png"
+    },
+    {
+      "id": "bandejas",
+      "label": "Bandejas",
+      "color": "#0891b2",
+      "imagen": "capas/pab2-entrepiso/bandejas.png"
+    },
+    {
+      "id": "cable_canal",
+      "label": "Cable canal",
+      "color": "#ca8a04",
+      "imagen": "capas/pab2-entrepiso/cable_canal.png"
+    },
+    {
+      "id": "canos",
+      "label": "Caños",
+      "color": "#65a30d",
+      "imagen": "capas/pab2-entrepiso/canos.png"
+    },
+    {
+      "id": "racks",
+      "label": "Racks",
+      "color": "#be123c",
+      "imagen": "capas/pab2-entrepiso/racks.png"
+    },
+    {
+      "id": "pases",
+      "label": "Pases",
+      "color": "#0d9488",
+      "imagen": "capas/pab2-entrepiso/pases.png"
+    },
+    {
+      "id": "cajas",
+      "label": "Cajas",
+      "color": "#db2777",
+      "imagen": "capas/pab2-entrepiso/cajas.png"
+    }
+  ]
+}

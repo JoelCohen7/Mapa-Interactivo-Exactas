@@ -1,0 +1,78 @@
+{
+  "pisoId": "pab1-entrepiso",
+  "crop": [
+    133,
+    674,
+    2698,
+    1623
+  ],
+  "base_arq": "capas/pab1-entrepiso/base_arq.png",
+  "capas": [
+    {
+      "id": "bocas_datos",
+      "label": "Bocas Datos",
+      "color": "#2563eb",
+      "imagen": "capas/pab1-entrepiso/bocas_datos.png"
+    },
+    {
+      "id": "bocas_tel_ip",
+      "label": "Bocas Tel IP",
+      "color": "#16a34a",
+      "imagen": "capas/pab1-entrepiso/bocas_tel_ip.png"
+    },
+    {
+      "id": "bocas_tel_emerg",
+      "label": "Bocas Tel Emergencia",
+      "color": "#dc2626",
+      "imagen": "capas/pab1-entrepiso/bocas_tel_emerg.png"
+    },
+    {
+      "id": "bandejas",
+      "label": "Bandejas",
+      "color": "#0891b2",
+      "imagen": "capas/pab1-entrepiso/bandejas.png"
+    },
+    {
+      "id": "cable_canal",
+      "label": "Cable canal",
+      "color": "#ca8a04",
+      "imagen": "capas/pab1-entrepiso/cable_canal.png"
+    },
+    {
+      "id": "canos",
+      "label": "Caños",
+      "color": "#65a30d",
+      "imagen": "capas/pab1-entrepiso/canos.png"
+    },
+    {
+      "id": "racks",
+      "label": "Racks",
+      "color": "#be123c",
+      "imagen": "capas/pab1-entrepiso/racks.png"
+    },
+    {
+      "id": "montantes",
+      "label": "Montantes / verticales",
+      "color": "#7c3aed",
+      "imagen": "capas/pab1-entrepiso/montantes.png"
+    },
+    {
+      "id": "pases",
+      "label": "Pases",
+      "color": "#0d9488",
+      "imagen": "capas/pab1-entrepiso/pases.png"
+    },
+    {
+      "id": "cajas",
+      "label": "Cajas",
+      "color": "#db2777",
+      "imagen": "capas/pab1-entrepiso/cajas.png"
+    },
+    {
+      "id": "sanitarios",
+      "label": "Sanitarios",
+      "color": "#0284c7",
+      "imagen": "capas/pab1-entrepiso/sanitarios.png"
+    }
+  ]
+}

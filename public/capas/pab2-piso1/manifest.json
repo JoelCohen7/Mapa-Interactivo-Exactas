@@ -1,0 +1,72 @@
+{
+  "pisoId": "pab2-piso1",
+  "crop": [
+    172,
+    531,
+    2858,
+    1777
+  ],
+  "base_arq": "capas/pab2-piso1/base_arq.png",
+  "capas": [
+    {
+      "id": "bocas_datos",
+      "label": "Bocas Datos",
+      "color": "#2563eb",
+      "imagen": "capas/pab2-piso1/bocas_datos.png"
+    },
+    {
+      "id": "bocas_tel_ip",
+      "label": "Bocas Tel IP",
+      "color": "#16a34a",
+      "imagen": "capas/pab2-piso1/bocas_tel_ip.png"
+    },
+    {
+      "id": "bocas_tel_analog",
+      "label": "Bocas Tel Analógico",
+      "color": "#9333ea",
+      "imagen": "capas/pab2-piso1/bocas_tel_analog.png"
+    },
+    {
+      "id": "bocas_tel_emerg",
+      "label": "Bocas Tel Emergencia",
+      "color": "#dc2626",
+      "imagen": "capas/pab2-piso1/bocas_tel_emerg.png"
+    },
+    {
+      "id": "fibra",
+      "label": "Fibra óptica",
+      "color": "#ea580c",
+      "imagen": "capas/pab2-piso1/fibra.png"
+    },
+    {
+      "id": "bandejas",
+      "label": "Bandejas",
+      "color": "#0891b2",
+      "imagen": "capas/pab2-piso1/bandejas.png"
+    },
+    {
+      "id": "canos",
+      "label": "Caños",
+      "color": "#65a30d",
+      "imagen": "capas/pab2-piso1/canos.png"
+    },
+    {
+      "id": "racks",
+      "label": "Racks",
+      "color": "#be123c",
+      "imagen": "capas/pab2-piso1/racks.png"
+    },
+    {
+      "id": "pases",
+      "label": "Pases",
+      "color": "#0d9488",
+      "imagen": "capas/pab2-piso1/pases.png"
+    },
+    {
+      "id": "cajas",
+      "label": "Cajas",
+      "color": "#db2777",
+      "imagen": "capas/pab2-piso1/cajas.png"
+    }
+  ]
+}
