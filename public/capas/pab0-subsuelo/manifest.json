@@ -1,0 +1,54 @@
+{
+  "pisoId": "pab0-subsuelo",
+  "crop": [
+    311,
+    709,
+    2000,
+    1517
+  ],
+  "base_arq": "capas/pab0-subsuelo/base_arq.png",
+  "capas": [
+    {
+      "id": "tomas_datos",
+      "label": "Tomas de Datos",
+      "color": "#2563eb",
+      "imagen": "capas/pab0-subsuelo/tomas_datos.png"
+    },
+    {
+      "id": "bandejas",
+      "label": "Bandejas",
+      "color": "#0891b2",
+      "imagen": "capas/pab0-subsuelo/bandejas.png"
+    },
+    {
+      "id": "canos_datos",
+      "label": "Caños datos",
+      "color": "#ca8a04",
+      "imagen": "capas/pab0-subsuelo/canos_datos.png"
+    },
+    {
+      "id": "cajas",
+      "label": "Cajas de pase",
+      "color": "#db2777",
+      "imagen": "capas/pab0-subsuelo/cajas.png"
+    },
+    {
+      "id": "montantes",
+      "label": "Montantes",
+      "color": "#7c3aed",
+      "imagen": "capas/pab0-subsuelo/montantes.png"
+    },
+    {
+      "id": "racks",
+      "label": "Racks / Tableros",
+      "color": "#be123c",
+      "imagen": "capas/pab0-subsuelo/racks.png"
+    },
+    {
+      "id": "trinchera",
+      "label": "Trinchera / Zocaloducto",
+      "color": "#737373",
+      "imagen": "capas/pab0-subsuelo/trinchera.png"
+    }
+  ]
+}

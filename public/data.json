@@ -212,19 +212,193 @@
       "id": "pab0-subsuelo",
       "pabellon": "Pabellón 0+inf",
       "piso": "Subsuelo",
-      "imagen": "planos/pab0-subsuelo.png"
+      "imagen": "planos/pab0-subsuelo.png",
+      "bases": [
+        {
+          "id": "color",
+          "label": "Coloreado",
+          "imagen": "planos/pab0-subsuelo.png"
+        },
+        {
+          "id": "arq",
+          "label": "Arquitectura",
+          "imagen": "capas/pab0-subsuelo/base_arq.png"
+        }
+      ],
+      "capas": [
+        {
+          "id": "tomas_datos",
+          "label": "Tomas de Datos",
+          "color": "#2563eb",
+          "imagen": "capas/pab0-subsuelo/tomas_datos.png"
+        },
+        {
+          "id": "bandejas",
+          "label": "Bandejas",
+          "color": "#0891b2",
+          "imagen": "capas/pab0-subsuelo/bandejas.png"
+        },
+        {
+          "id": "canos_datos",
+          "label": "Caños datos",
+          "color": "#ca8a04",
+          "imagen": "capas/pab0-subsuelo/canos_datos.png"
+        },
+        {
+          "id": "cajas",
+          "label": "Cajas de pase",
+          "color": "#db2777",
+          "imagen": "capas/pab0-subsuelo/cajas.png"
+        },
+        {
+          "id": "montantes",
+          "label": "Montantes",
+          "color": "#7c3aed",
+          "imagen": "capas/pab0-subsuelo/montantes.png"
+        },
+        {
+          "id": "racks",
+          "label": "Racks / Tableros",
+          "color": "#be123c",
+          "imagen": "capas/pab0-subsuelo/racks.png"
+        },
+        {
+          "id": "trinchera",
+          "label": "Trinchera / Zocaloducto",
+          "color": "#737373",
+          "imagen": "capas/pab0-subsuelo/trinchera.png"
+        }
+      ]
     },
     {
       "id": "pab0-pb",
       "pabellon": "Pabellón 0+inf",
       "piso": "Planta baja",
-      "imagen": "planos/pab0-pb.png"
+      "imagen": "planos/pab0-pb.png",
+      "bases": [
+        {
+          "id": "color",
+          "label": "Coloreado",
+          "imagen": "planos/pab0-pb.png"
+        },
+        {
+          "id": "arq",
+          "label": "Arquitectura",
+          "imagen": "capas/pab0-pb/base_arq.png"
+        }
+      ],
+      "capas": [
+        {
+          "id": "tomas_datos",
+          "label": "Tomas de Datos",
+          "color": "#2563eb",
+          "imagen": "capas/pab0-pb/tomas_datos.png"
+        },
+        {
+          "id": "bandejas",
+          "label": "Bandejas",
+          "color": "#0891b2",
+          "imagen": "capas/pab0-pb/bandejas.png"
+        },
+        {
+          "id": "canos_datos",
+          "label": "Caños datos",
+          "color": "#ca8a04",
+          "imagen": "capas/pab0-pb/canos_datos.png"
+        },
+        {
+          "id": "cajas",
+          "label": "Cajas de pase",
+          "color": "#db2777",
+          "imagen": "capas/pab0-pb/cajas.png"
+        },
+        {
+          "id": "montantes",
+          "label": "Montantes",
+          "color": "#7c3aed",
+          "imagen": "capas/pab0-pb/montantes.png"
+        },
+        {
+          "id": "racks",
+          "label": "Racks / Tableros",
+          "color": "#be123c",
+          "imagen": "capas/pab0-pb/racks.png"
+        },
+        {
+          "id": "trinchera",
+          "label": "Trinchera / Zocaloducto",
+          "color": "#737373",
+          "imagen": "capas/pab0-pb/trinchera.png"
+        },
+        {
+          "id": "canos_seg",
+          "label": "Caños Seg. / FM",
+          "color": "#65a30d",
+          "imagen": "capas/pab0-pb/canos_seg.png"
+        }
+      ]
     },
     {
       "id": "pab0-piso1",
       "pabellon": "Pabellón 0+inf",
       "piso": "Piso 1",
-      "imagen": "planos/pab0-piso1.png"
+      "imagen": "planos/pab0-piso1.png",
+      "bases": [
+        {
+          "id": "color",
+          "label": "Coloreado",
+          "imagen": "planos/pab0-piso1.png"
+        },
+        {
+          "id": "arq",
+          "label": "Arquitectura",
+          "imagen": "capas/pab0-piso1/base_arq.png"
+        }
+      ],
+      "capas": [
+        {
+          "id": "tomas_datos",
+          "label": "Tomas de Datos",
+          "color": "#2563eb",
+          "imagen": "capas/pab0-piso1/tomas_datos.png"
+        },
+        {
+          "id": "bandejas",
+          "label": "Bandejas",
+          "color": "#0891b2",
+          "imagen": "capas/pab0-piso1/bandejas.png"
+        },
+        {
+          "id": "canos_datos",
+          "label": "Caños datos",
+          "color": "#ca8a04",
+          "imagen": "capas/pab0-piso1/canos_datos.png"
+        },
+        {
+          "id": "cajas",
+          "label": "Cajas de pase",
+          "color": "#db2777",
+          "imagen": "capas/pab0-piso1/cajas.png"
+        },
+        {
+          "id": "montantes",
+          "label": "Montantes",
+          "color": "#7c3aed",
+          "imagen": "capas/pab0-piso1/montantes.png"
+        },
+        {
+          "id": "trinchera",
+          "label": "Trinchera / Zocaloducto",
+          "color": "#737373",
+          "imagen": "capas/pab0-piso1/trinchera.png"
+        },
+        {
+          "id": "canos_seg",
+          "label": "Caños Seg. / FM",
+          "color": "#65a30d",
+          "imagen": "capas/pab0-piso1/canos_seg.png"
+        }
+      ]
     },
     {
       "id": "pab1-subsuelo",

@@ -163,6 +163,11 @@ async function cambiarPiso(pisoId) {
   Object.values(state.capaOverlays).forEach(l => map.removeLayer(l));
   state.capaOverlays = {};
 
+  // Con fondo arquitectura, todas las capas del piso activas por defecto
+  if (state.activeBaseId !== 'color') {
+    (piso.capas || []).forEach(c => state.activeCapas.add(c.id));
+  }
+
   // Fondo activo
   state.baseOverlay = L.imageOverlay(baseImagenActual(piso), bounds).addTo(map);
   map.fitBounds(bounds);
@@ -192,11 +197,19 @@ function cambiarBase(baseId) {
     Object.values(state.capaOverlays).forEach(l => map.removeLayer(l));
     state.capaOverlays = {};
     state.activeCapas.clear();
+  } else {
+    // Al activar arquitectura, encender todas las capas del piso
+    (piso.capas || []).forEach(c => {
+      state.activeCapas.add(c.id);
+      if (!state.capaOverlays[c.id]) {
+        state.capaOverlays[c.id] = L.imageOverlay(rutaPublic(c.imagen), bounds).addTo(map);
+      }
+    });
   }
   if (state.baseOverlay) map.removeLayer(state.baseOverlay);
   state.baseOverlay = L.imageOverlay(baseImagenActual(piso), bounds).addTo(map);
-  state.baseOverlay.bringToBack(); // que el fondo quede debajo de las capas
-  construirPanelCapas();           // refrescar checkboxes (desmarcados / deshabilitados)
+  state.baseOverlay.bringToBack();
+  construirPanelCapas();
 }
 
 // Prende/apaga una capa de red apilable.
@@ -222,7 +235,23 @@ function toggleCapa(capa, on) {
 function construirPanelCapas() {
   const block = document.getElementById('capas-block');
   const piso = pisoActual();
-  if (!piso.capas || !piso.capas.length) { block.hidden = true; return; }
+
+  const toggleAllBtn = document.getElementById('toggle-all-capas');
+
+  if (!piso.bases?.length) {
+    block.hidden = false;
+    toggleAllBtn.hidden = true;
+    document.getElementById('base-switch').innerHTML = '';
+    const lista = document.getElementById('capas-list');
+    lista.innerHTML = '';
+    const nota = document.createElement('p');
+    nota.className = 'hint capas-hint';
+    nota.textContent = 'No hay plano de Arquitectura disponible para este piso.';
+    lista.appendChild(nota);
+    return;
+  }
+
+  if (!piso.capas || !piso.capas.length) { block.hidden = true; toggleAllBtn.hidden = true; return; }
   block.hidden = false;
 
   // Switch de fondo
@@ -242,10 +271,23 @@ function construirPanelCapas() {
   const lista = document.getElementById('capas-list');
   lista.innerHTML = '';
   if (bloqueado) {
+    toggleAllBtn.hidden = true;
     const nota = document.createElement('p');
     nota.className = 'hint capas-hint';
     nota.textContent = 'Las capas de red solo se ven con el fondo «Arquitectura».';
     lista.appendChild(nota);
+  } else {
+    const todasActivas = piso.capas.every(c => state.activeCapas.has(c.id));
+    toggleAllBtn.hidden = false;
+    toggleAllBtn.textContent = todasActivas ? 'Desactivar todas' : 'Activar todas';
+    toggleAllBtn.onclick = () => {
+      if (todasActivas) {
+        piso.capas.forEach(c => toggleCapa(c, false));
+      } else {
+        piso.capas.forEach(c => toggleCapa(c, true));
+      }
+      construirPanelCapas();
+    };
   }
   piso.capas.forEach(c => {
     const row = document.createElement('label');

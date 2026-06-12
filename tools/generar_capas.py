@@ -34,6 +34,9 @@ ARQUITECTURA = {"_prefijos": ("ARQ_", "EST_"),
                            "A-MUROS EXIST.", "A-TABIQUES NUEVOS",
                            "A-TABQ. PERFILERIA EXIST.", "A-DURLOCK", "BARRIDO PUERTAS"}}
 
+# Nombres de muros para la auto-detección del recorte (Pab1/Pab2)
+MUROS_PAB12 = {"ARQ_MUROS", "EST_COLUMNAS", "ARQ_PUERTAS", "MUROS", "COLUMNAS"}
+
 CAPAS = {
     "bocas_datos":      ("Bocas Datos",        "#2563eb", ["E-BOCAS DATOS", "E-TEXTO BOCAS -  DATOS"]),
     "bocas_tel_ip":     ("Bocas Tel IP",       "#16a34a", ["E-BOCAS TEL IP", "E-TEXTO BOCAS - TEL IP"]),
@@ -51,10 +54,53 @@ CAPAS = {
     "sanitarios":       ("Sanitarios",         "#0284c7", ["SANIT", "SANIT-INT"]),
 }
 
+# --- Pabellón 0: capas y arquitectura propios (esquema CAD 2025, distinto a Pab1/2) ---
+def _norm(s): return s.strip().upper()
+
+_PAB0_ARQ = {_norm(n) for n in [
+    "A-WALL", "A-WALL-GWB",
+    "A-DOOR", "A-DOOR-SWING", "A-DOOR-PROFILE",
+    "A-CURTAINWALL", "A-CURTAINWALL-LIGHT", "A-CURTAINWALL-HIDDEN",
+    "E_columnas", "S-COLS", "S-WALL", "S-WALL-CONC", "S-COL-HATCH",
+    "A-STAIR_RISER", "A-STAIR-RAILING",
+    "A-GLAZ", "A-GLAZ-HATCH", "A-GLAZ_",
+    "A-INT-PART-DOOR", "A-INT-PART-SWING",
+    "A-FRAMING-STUD", "TABIQUE",
+    "A-ELEVATOR_M", "A-ELEVATOR_XL",
+]}
+
+_PAB0_MUROS = {_norm(n) for n in [
+    "A-WALL", "A-WALL-GWB", "S-WALL", "S-WALL-CONC", "E_columnas", "S-COLS",
+]}
+
+def es_arquitectura_pab0(nombre):
+    return _norm(nombre) in _PAB0_ARQ
+
+CAPAS_PAB0 = {
+    "tomas_datos":  ("Tomas de Datos",          "#2563eb", ["OIKOSS TD - NUCLEO 1", "OIKOSS TD - NUCLEO 3", "OIKOSS TD - NUCLEO 4", "OIKOSS TD - NUCLEO 5"]),
+    "bandejas":     ("Bandejas",                "#0891b2", ["IE-BAND", "IE-Bandeja Perforada", "IE-Bandejas CD bajo piso", "IE-CD-Bandejas"]),
+    "canos_datos":  ("Caños datos",             "#ca8a04", ["IE-CD-Caños TD", "IE-TC-Caños", "IE-CD-Componentes TD"]),
+    "cajas":        ("Cajas de pase",           "#db2777", ["IE-Cajas de pase", "IE-TC- CAJA ALUMINIO"]),
+    "montantes":    ("Montantes",               "#7c3aed", ["IE-Montantes"]),
+    "racks":        ("Racks / Tableros",        "#be123c", ["COSUD-RACKS", "IE-Tableros"]),
+    "trinchera":    ("Trinchera / Zocaloducto", "#737373", ["IE-TRINCHERA", "IE-Zocaloducto"]),
+    "canos_seg":    ("Caños Seg. / FM",         "#65a30d", ["IE-SE-Caños CA", "IE-SE-Caños CCTV", "IE-FM-Caños"]),
+}
+
 # --- Config por piso --------------------------------------------------------
 # crop: [x0,y0,x1,y1] en px del render a REF_DPI. None = autodetectar por muros.
+# capas/es_arq/muros_nombres: overrides por piso (si no, se usan los globales).
 _PAB1 = os.path.join(PLANOS, "Pab1", "Pab1-Bocas (2016).pdf")
 _PAB2 = os.path.join(PLANOS, "Pab2", "Pab2-Bocas (2016).pdf")
+_PAB0 = os.path.join(PLANOS, "Pab0", "Pab0-Bocas (2025).pdf")
+_PAB0_FLOOR = lambda page, pisoId: {
+    "pdf": _PAB0, "page": page,
+    "colored": os.path.join(PUBLIC, "planos", f"{pisoId}.png"),
+    "crop": None,
+    "capas": CAPAS_PAB0,
+    "es_arq": es_arquitectura_pab0,
+    "muros_nombres": _PAB0_MUROS,
+}
 
 FLOORS = {
     # --- Pabellón 1 (4 páginas) ---
@@ -122,6 +168,11 @@ FLOORS = {
         "crop": None,
     },
     # pab2-azotea: sin instalaciones en el PDF de bocas, se omite
+
+    # --- Pabellón 0 (3 páginas: PB, Piso1, Subsuelo) ---
+    "pab0-pb":       _PAB0_FLOOR(1, "pab0-pb"),
+    "pab0-piso1":    _PAB0_FLOOR(2, "pab0-piso1"),
+    "pab0-subsuelo": _PAB0_FLOOR(3, "pab0-subsuelo"),
 }
 
 
@@ -174,12 +225,16 @@ def build_floor(piso_id, cfg):
     W, H = color.size
     print(f"  encuadre destino (plano coloreado): {W}x{H}")
 
+    # Configuración de capas y arquitectura: por piso si existe, si no la global
+    capas_config   = cfg.get("capas", CAPAS)
+    es_arq         = cfg.get("es_arq", es_arquitectura)
+    muros_nombres  = cfg.get("muros_nombres", MUROS_PAB12)
+
     # 1) Determinar recorte del edificio en el PDF
     crop = cfg.get("crop")
     if crop is None:
         muros = render(cfg["pdf"], cfg["page"],
-                       lambda n: norm(n) in {"ARQ_MUROS", "EST_COLUMNAS", "ARQ_PUERTAS",
-                                             "MUROS", "COLUMNAS"})
+                       lambda n: norm(n) in muros_nombres)
         crop = muros.getbbox()
         print(f"  recorte autodetectado (muros): {crop}")
     else:
@@ -187,19 +242,28 @@ def build_floor(piso_id, cfg):
 
     def exportar(nombre_archivo, predicado, transp=True):
         img = render(cfg["pdf"], cfg["page"], predicado, transp=transp)
-        img = img.crop(crop).resize((W, H))
+        img = img.crop(crop)
         if transp and not img.getbbox():
             return False  # capa vacía en este piso
-        img.save(os.path.join(salida, nombre_archivo))
+        # Letterbox: escalar uniformemente al tamaño del plano coloreado (W×H)
+        # sin distorsionar el aspect ratio. El margen se rellena blanco u opaco.
+        cw, ch = img.size
+        scale = min(W / cw, H / ch)
+        nw, nh = max(1, int(cw * scale)), max(1, int(ch * scale))
+        img = img.resize((nw, nh), Image.LANCZOS)
+        bg = (255, 255, 255, 255) if not transp else (0, 0, 0, 0)
+        canvas = Image.new("RGBA", (W, H), bg)
+        canvas.paste(img, ((W - nw) // 2, (H - nh) // 2))
+        canvas.save(os.path.join(salida, nombre_archivo))
         return True
 
     # 2) Fondo arquitectura (opaco, blanco — es un plano base)
-    exportar("base_arq.png", es_arquitectura, transp=False)
+    exportar("base_arq.png", es_arq, transp=False)
     print("  base_arq.png ✓")
 
     # 3) Capas de red (solo las no vacías)
     generadas = []
-    for lid, (label, colorhex, nombres) in CAPAS.items():
+    for lid, (label, colorhex, nombres) in capas_config.items():
         if exportar(f"{lid}.png", matcher(nombres)):
             generadas.append({"id": lid, "label": label, "color": colorhex,
                               "imagen": f"capas/{piso_id}/{lid}.png"})
